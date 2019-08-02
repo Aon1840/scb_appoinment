@@ -91,13 +91,17 @@ class DashboardViewController: UIViewController, UITableViewDataSource, UITableV
         
         switch item.typeID {
         case 1:
-            cell?.mCardLeft.backgroundColor = UIColor(red: 101.0/255, green: 200.0/255, blue: 121.0/255, alpha: 1.0)
+            cell?.mCardLeft.backgroundColor = UIColor(red: 154.0/255, green: 110.0/255, blue: 179.0/255, alpha: 1.0)
+            break
         case 2:
-            cell?.mCardLeft.backgroundColor = UIColor.init(red: 126.0/255, green: 162.0/255, blue: 193.0/255, alpha: 1.0)
+            cell?.mCardLeft.backgroundColor = UIColor.init(red: 80.0/255, green: 151.0/255, blue: 213.0/255, alpha: 1.0)
+            break
         case 3:
-            cell?.mCardLeft.backgroundColor = UIColor.init(red: 117.0/255, green: 188.0/255, blue: 169.0/255, alpha: 1.0)
+            cell?.mCardLeft.backgroundColor = UIColor.init(red: 101.0/255, green: 200.0/255, blue: 122.0/255, alpha: 1.0)
+            break
         default:
-            cell?.mCardLeft.backgroundColor = UIColor.init(red: 169.0/255, green: 147.0/255, blue: 183.0/255, alpha: 1.0)
+            cell?.mCardLeft.backgroundColor = UIColor.init(red: 108.0/255, green: 128.0/255, blue: 156.0/255, alpha: 1.0)
+            break
         }
         
         cell?.mTopicLabel.text = item.subject
@@ -133,17 +137,17 @@ class DashboardViewController: UIViewController, UITableViewDataSource, UITableV
         if segue.identifier == "historyAnnual" {
             destinationVC.availableDay = mAnnualAvailable.text!
             destinationVC.topic = "ANNUAL"
-            destinationVC.typId = 1
+            destinationVC.typId = 3
             print("historyAnnual")
-        } else if segue.identifier == "historySick" {
-            destinationVC.availableDay = mSickAvailable.text!
-            destinationVC.topic = "SICK"
-            destinationVC.typId = 2
-            print("historySick")
         } else if segue.identifier == "historyPersonal" {
             destinationVC.availableDay = mPersonalAvailable.text!
             destinationVC.topic = "PERSONAL"
-            destinationVC.typId = 3
+            destinationVC.typId = 2
+            print("historySick")
+        } else if segue.identifier == "historySick" {
+            destinationVC.availableDay = mSickAvailable.text!
+            destinationVC.topic = "SICK"
+            destinationVC.typId = 1
             print("historyPersonal")
         } else {
             destinationVC.availableDay = mOtherAvailable.text!

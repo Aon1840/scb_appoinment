@@ -52,7 +52,7 @@
                                             <constraint firstAttribute="trailing" secondItem="Wqm-EU-zjT" secondAttribute="trailing" id="uYR-0b-Yb6"/>
                                         </constraints>
                                         <connections>
-                                            <outletCollection property="gestureRecognizers" destination="AX2-qd-aS5" appends="YES" id="VsL-5n-SvC"/>
+                                            <outletCollection property="gestureRecognizers" destination="cfF-rd-JoT" appends="YES" id="WN9-UO-glT"/>
                                         </connections>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8Pf-eu-BA9">
@@ -86,7 +86,7 @@
                                             <constraint firstAttribute="trailing" secondItem="dxE-oG-GNI" secondAttribute="trailing" id="pyM-d6-0es"/>
                                         </constraints>
                                         <connections>
-                                            <outletCollection property="gestureRecognizers" destination="oO3-zD-nO3" appends="YES" id="og6-ma-JA4"/>
+                                            <outletCollection property="gestureRecognizers" destination="DjM-H0-4GV" appends="YES" id="6Sp-fe-xf2"/>
                                         </connections>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dAO-ge-4nb">
@@ -120,7 +120,7 @@
                                             <constraint firstAttribute="width" secondItem="dAO-ge-4nb" secondAttribute="height" multiplier="85:142" id="zQa-RY-CTA"/>
                                         </constraints>
                                         <connections>
-                                            <outletCollection property="gestureRecognizers" destination="jVB-rJ-eFo" appends="YES" id="LvA-S8-Tcw"/>
+                                            <outletCollection property="gestureRecognizers" destination="oGC-2P-6eD" appends="YES" id="qTE-3I-50Y"/>
                                         </connections>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cIs-3D-Rxr">
@@ -154,7 +154,7 @@
                                             <constraint firstItem="l8p-Hp-Cb3" firstAttribute="leading" secondItem="cIs-3D-Rxr" secondAttribute="leading" id="kWg-FD-sMu"/>
                                         </constraints>
                                         <connections>
-                                            <outletCollection property="gestureRecognizers" destination="7iS-bZ-4LT" appends="YES" id="QGs-Mk-eCZ"/>
+                                            <outletCollection property="gestureRecognizers" destination="ce5-dh-c0K" appends="YES" id="8XC-no-uPF"/>
                                         </connections>
                                     </view>
                                 </subviews>
@@ -291,24 +291,24 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="5Cs-od-bYa" sceneMemberID="firstResponder"/>
-                <tapGestureRecognizer id="AX2-qd-aS5">
+                <tapGestureRecognizer id="cfF-rd-JoT" userLabel="AnnualTapGesture">
                     <connections>
-                        <segue destination="9Fh-99-0AU" kind="show" identifier="historyAnnual" id="hSX-t2-rXe"/>
+                        <segue destination="9Fh-99-0AU" kind="show" identifier="historyAnnual" id="XwV-HG-pW1"/>
                     </connections>
                 </tapGestureRecognizer>
-                <tapGestureRecognizer id="oO3-zD-nO3">
+                <tapGestureRecognizer id="DjM-H0-4GV" userLabel="PersonalTapGesture" customClass="historyPersonal">
                     <connections>
-                        <segue destination="9Fh-99-0AU" kind="show" identifier="historySick" id="Sua-wG-Y1Y"/>
+                        <segue destination="9Fh-99-0AU" kind="show" identifier="historyPersonal" id="k0Z-QG-hib"/>
                     </connections>
                 </tapGestureRecognizer>
-                <tapGestureRecognizer id="jVB-rJ-eFo">
+                <tapGestureRecognizer id="oGC-2P-6eD" userLabel="SickTapGesture">
                     <connections>
-                        <segue destination="9Fh-99-0AU" kind="show" identifier="historyPersonal" id="YeH-Jd-2K5"/>
+                        <segue destination="9Fh-99-0AU" kind="show" identifier="historySick" id="VdL-PN-eTR"/>
                     </connections>
                 </tapGestureRecognizer>
-                <tapGestureRecognizer id="7iS-bZ-4LT">
+                <tapGestureRecognizer id="ce5-dh-c0K" userLabel="OtherTapGesture">
                     <connections>
-                        <segue destination="9Fh-99-0AU" kind="show" identifier="historyOther" id="F0w-pe-Rp9"/>
+                        <segue destination="9Fh-99-0AU" kind="show" identifier="historyOther" id="rtJ-Qv-Vzj"/>
                     </connections>
                 </tapGestureRecognizer>
             </objects>
@@ -1210,6 +1210,6 @@
         <image name="time.png" width="409.60000610351562" height="409.60000610351562"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="Sua-wG-Y1Y"/>
+        <segue reference="k0Z-QG-hib"/>
     </inferredMetricsTieBreakers>
 </document>
