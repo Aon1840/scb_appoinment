@@ -16,7 +16,6 @@ class DashboardViewController: UIViewController, UITableViewDataSource, UITableV
     var mFeed: FeedData!
     var mDataArray: [Vacation] = []
     var mDataAvailable : [DataClass] = []
-    var mDataYoutube: [Youtube] = []
     var mPageIndex:Int = 1
     var mPageSize:Int = 10
     let transitionDelegate = SPStorkTransitioningDelegate()
@@ -133,7 +132,7 @@ class DashboardViewController: UIViewController, UITableViewDataSource, UITableV
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        let destinationVC = segue.destination as! AnnualHistoryViewController
+        let destinationVC = segue.destination as! HistoryViewController
         if segue.identifier == "historyAnnual" {
             destinationVC.availableDay = mAnnualAvailable.text!
             destinationVC.topic = "ANNUAL"
@@ -146,6 +145,7 @@ class DashboardViewController: UIViewController, UITableViewDataSource, UITableV
             print("historySick")
         } else if segue.identifier == "historySick" {
             destinationVC.availableDay = mSickAvailable.text!
+            print("------ mSickAvailable: \(mSickAvailable.text)")
             destinationVC.topic = "SICK"
             destinationVC.typId = 1
             print("historyPersonal")
@@ -162,7 +162,10 @@ class DashboardViewController: UIViewController, UITableViewDataSource, UITableV
 //        let _url = "http://192.168.108.152:9999/apigateway/vacation/getAvailableLeaveDayByUserId?userId=9"
         let _url = "http://192.168.109.73:8080/api/vacation/getAvailableLeaveDayByUserId?userId=9"
         self.mFeed.feedAvailable(url: _url, completion: { (result) in
+            print("result: \(result)")
+            print("result: \(result[0].day)")
             self.mDataAvailable += result
+            
             self.mAnnualAvailable.text = String(result[2].day)
             self.mSickAvailable.text = String(result[0].day)
             self.mPersonalAvailable.text = String(result[1].day)

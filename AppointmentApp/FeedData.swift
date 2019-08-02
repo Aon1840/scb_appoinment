@@ -19,29 +19,8 @@ class FeedData {
                     let decoder = JSONDecoder()
                     let result = try decoder.decode(AvailableLeaveResponse.self, from: response.data!)
                     completion(result.data)
-//                    print("------result from feedData \(result)")
                     break
                 } catch {
-                    
-                }
-            case .failure(let error):
-                break
-            }
-        }
-    }
-    
-    
-    func feedVacation(url:String, completion:@escaping ([Datum]) -> ()){
-        AF.request(URL(string: url)!, method: .get).responseJSON { (response) in
-            switch response.result {
-            case .success:
-                do{
-                    let decoder = JSONDecoder()
-                    let result = try decoder.decode(VacationResponse.self, from: response.data!)
-                    completion(result.data)
-//                    print("------ \(result.data[0])")
-                    break
-                }catch{
                     
                 }
             case .failure(let error):
@@ -92,26 +71,6 @@ class FeedData {
     }
 
     
-    // for test loadmore from codemobile
-    func feedData(url:String, completion:@escaping ([Youtube]) -> ()){
-        AF.request(URL(string: url)!, method: .get).responseData { (response) in
-            switch response.result {
-            case .success:
-                do {
-                    let decoder = JSONDecoder()
-                    let result = try decoder.decode(YoutubeResponse.self, from: response.data!)
-                    let youtubeBean = result.youtubes
-//                    print("---- youtubeBean: \(youtubeBean)")
-                    completion(youtubeBean)
-                    break
-                } catch {
-                    
-                }
-            case .failure(let error):
-                break
-            }
-            
-        }
 
     }
     
@@ -156,6 +115,6 @@ class FeedData {
     //        }
     //    }
     
-}
+
     
 
