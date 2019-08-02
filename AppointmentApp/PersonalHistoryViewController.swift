@@ -8,8 +8,12 @@
 
 import UIKit
 
-class PersonalHistoryViewController: UIViewController {
-
+class PersonalHistoryViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+    
+    var mFeed: FeedData!
+    var mDataArray: [VacationHistory] = []
+    var mPageIndex:Int = 1
+    var mPageSize:Int = 10
     @IBOutlet weak var mHeader:UIView!
     @IBOutlet weak var mImage:UIImageView!
     @IBOutlet weak var mContainerName:UIView!
@@ -17,16 +21,42 @@ class PersonalHistoryViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        print("start")
+        
+        self.mFeed = FeedData()
+        
         self.mHeader.roundCorners([.bottomLeft, .bottomRight], radius: 40)
-//        self.mImage = UIImage(named: "dog") as? UIImageView
         self.mImage.makeCircle()
         self.mContainerName.layer.cornerRadius = 10
         self.mContainerName.layer.borderWidth = 0.2
         self.mContainerName.layer.borderColor = UIColor.gray.cgColor
+        
+        //        feedVacationHistory(true)
     }
     
-
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return 10
+    }
     
-
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "personalCell") as? VacationTableViewCell
+        
+        return cell!
+    }
+    
+//    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+//        //        return mDataArray.count
+//        return 10
+//    }
+//
+//    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+//        let cell = tableView.dequeueReusableCell(withIdentifier: "personalCell") as? VacationTableViewCell
+//
+//        return cell!
+//    }
+    
+    func feedVacationHistory(_ isLoadMore:Bool) {
+        
+    }
+    
+    
 }

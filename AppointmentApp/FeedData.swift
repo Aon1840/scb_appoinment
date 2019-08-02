@@ -11,15 +11,15 @@ import Alamofire
 
 class FeedData {
     
-    func feedAvailable(url:String, completion:@escaping (DataClass) -> ()) {
+    func feedAvailable(url:String, completion:@escaping ([DataClass]) -> ()) {
         AF.request(URL(string: url)!, method: .get).responseJSON { (response) in
             switch response.result {
             case .success:
                 do {
                     let decoder = JSONDecoder()
-                    let result = try decoder.decode(AvailableResponse.self, from: response.data!)
+                    let result = try decoder.decode(AvailableLeaveResponse.self, from: response.data!)
                     completion(result.data)
-                    print("------ \(result)")
+//                    print("------result from feedData \(result)")
                     break
                 } catch {
                     
@@ -30,6 +30,7 @@ class FeedData {
         }
     }
     
+    
     func feedVacation(url:String, completion:@escaping ([Datum]) -> ()){
         AF.request(URL(string: url)!, method: .get).responseJSON { (response) in
             switch response.result {
@@ -38,7 +39,7 @@ class FeedData {
                     let decoder = JSONDecoder()
                     let result = try decoder.decode(VacationResponse.self, from: response.data!)
                     completion(result.data)
-                    print("------ \(result.data[0])")
+//                    print("------ \(result.data[0])")
                     break
                 }catch{
                     
@@ -49,27 +50,49 @@ class FeedData {
         }
     }
     
-//    func feedTestLoadmore(url:String, completion:@escaping ([Datum]) -> ()){
-//        AF.request(URL(string: url)!, method: .get).response { (response) in
-//            switch response.result {
-//            case .success:
-//                do {
-//                    let decoder = JSONDecoder()
-//                    let result = try decoder.decode(VacationFutureResponse.self, from: response.data!)
-//                    let youtubeBean = result.data
-//                                    print("---- youtubeBean: \(youtubeBean)")
-//                    completion(youtubeBean)
-//                    break
-//                } catch {
-//                    
-//                }
-//            case .failure(let error):
-//                break
-//            }
-//            
-//        }
-//    }
+    func feedVacationPage(url:String, completion:@escaping ([Vacation]) -> ()){
+        AF.request(URL(string: url)!, method: .get).responseJSON { (response) in
+            switch response.result {
+            case .success:
+                do{
+                    let decoder = JSONDecoder()
+                    let result = try decoder.decode(VacationPageResponse.self, from: response.data!)
+                    completion(result.data)
+//                    print("------ \(result.data[0])")
+                    break
+                }catch{
+                    
+                }
+            case .failure(let error):
+                break
+            }
+        }
+    }
     
+    func feedVacationHistoryPage(url:String, completion:@escaping ([VacationHistory]) -> ()){
+        
+        AF.request(URL(string: url)!, method: .get).responseJSON { (response) in
+//            print(response.result)
+            switch response.result {
+            case .success:
+                do{
+                    let decoder = JSONDecoder()
+                    let result = try decoder.decode(VacationPageHistoryResponse.self, from: response.data!)
+                    completion(result.data)
+                    //                    print("------ \(result.data[0])")
+                    break
+                }catch(let error){
+                    print(error)
+                }
+            case .failure(let error):
+                print(error)
+                break
+            }
+        }
+    }
+
+    
+    // for test loadmore from codemobile
     func feedData(url:String, completion:@escaping ([Youtube]) -> ()){
         AF.request(URL(string: url)!, method: .get).responseData { (response) in
             switch response.result {
@@ -78,7 +101,7 @@ class FeedData {
                     let decoder = JSONDecoder()
                     let result = try decoder.decode(YoutubeResponse.self, from: response.data!)
                     let youtubeBean = result.youtubes
-                    print("---- youtubeBean: \(youtubeBean)")
+//                    print("---- youtubeBean: \(youtubeBean)")
                     completion(youtubeBean)
                     break
                 } catch {
@@ -92,7 +115,46 @@ class FeedData {
 
     }
     
+    //    func feedTestLoadmore(url:String, completion:@escaping ([Datum]) -> ()){
+    //        AF.request(URL(string: url)!, method: .get).response { (response) in
+    //            switch response.result {
+    //            case .success:
+    //                do {
+    //                    let decoder = JSONDecoder()
+    //                    let result = try decoder.decode(VacationFutureResponse.self, from: response.data!)
+    //                    let youtubeBean = result.data
+    //                                    print("---- youtubeBean: \(youtubeBean)")
+    //                    completion(youtubeBean)
+    //                    break
+    //                } catch {
+    //
+    //                }
+    //            case .failure(let error):
+    //                break
+    //            }
+    //
+    //        }
+    //    }
     
+    
+    //    func feedAvailable(url:String, completion:@escaping (DataClass) -> ()) {
+    //        AF.request(URL(string: url)!, method: .get).responseJSON { (response) in
+    //            switch response.result {
+    //            case .success:
+    //                do {
+    //                    let decoder = JSONDecoder()
+    //                    let result = try decoder.decode(AvailableResponse.self, from: response.data!)
+    //                    completion(result.data)
+    //                    print("------ \(result)")
+    //                    break
+    //                } catch {
+    //
+    //                }
+    //            case .failure(let error):
+    //                break
+    //            }
+    //        }
+    //    }
     
 }
     

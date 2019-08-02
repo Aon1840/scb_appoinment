@@ -9,19 +9,19 @@
 import Foundation
 
 // MARK: - Welcome
-struct AvailableResponse: Codable {
-    let status, message: String
-    let data: DataClass
-}
-
-// MARK: - DataClass
-struct DataClass: Codable {
-    let sickLeave, personalLeave, vacationLeave, other: Int
-    
-    enum CodingKeys: String, CodingKey {
-        case sickLeave = "Sick Leave"
-        case personalLeave = "Personal Leave"
-        case vacationLeave = "Vacation Leave"
-        case other = "Other"
-    }
-}
+//struct AvailableResponse: Codable {
+//    let status, message: String
+//    let data: DataClass
+//}
+//
+//// MARK: - DataClass
+//struct DataClass: Codable {
+//    let sickLeave, personalLeave, vacationLeave, other: Int
+//    
+//    enum CodingKeys: String, CodingKey {
+//        case sickLeave = "Sick Leave"
+//        case personalLeave = "Personal Leave"
+//        case vacationLeave = "Vacation Leave"
+//        case other = "Other"
+//    }
+//}

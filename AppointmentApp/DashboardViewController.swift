@@ -9,11 +9,13 @@
 import UIKit
 import SPStorkController
 import MJRefresh
+import Alamofire
 
 class DashboardViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
     var mFeed: FeedData!
-    var mDataArray: [Datum] = []
+    var mDataArray: [Vacation] = []
+    var mDataAvailable : [DataClass] = []
     var mDataYoutube: [Youtube] = []
     var mPageIndex:Int = 1
     var mPageSize:Int = 10
@@ -31,6 +33,8 @@ class DashboardViewController: UIViewController, UITableViewDataSource, UITableV
     @IBOutlet weak var mContainer:UIView!
     
     override func viewDidLoad() {
+        
+        
         super.viewDidLoad()
         
         // inital FeedData
@@ -59,65 +63,117 @@ class DashboardViewController: UIViewController, UITableViewDataSource, UITableV
         
         // call function feedVacationData
         feedVacationData(true)
+        
+//        test()
+    }
+    
+    func test() {
+        AF.request("http://192.168.109.73:8080/api/vacation/create?userId=42232", method: .post, parameters: [
+            "typeId": 4, "subject":"Subject","description": "headache","value": 1,"startDate": 1564160402,"endDate": 1564160402], encoding: JSONEncoding.default, headers: nil).responseJSON { (result) in
+            switch result.result {
+            case .success:
+                print("----- test success")
+                print(result)
+            case .failure:
+                print("----- test failure")
+                
+            }
+        }
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return mDataYoutube.count
+        return mDataArray.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-//        let cell = tableView.dequeueReusableCell(withIdentifier: "cell") as? VacationTableViewCell
-//        let item = mDataArray[indexPath.row]
-        
-//        switch item.typeID {
-//        case "1":
-//            cell?.mCardLeft.backgroundColor = UIColor(red: 212.0/255, green: 139.0/255, blue: 128.0/255, alpha: 1.0)
-//        case "2":
-//            cell?.mCardLeft.backgroundColor = UIColor.init(red: 126.0/255, green: 162.0/255, blue: 193.0/255, alpha: 1.0)
-//        case "3":
-//            cell?.mCardLeft.backgroundColor = UIColor.init(red: 117.0/255, green: 188.0/255, blue: 169.0/255, alpha: 1.0)
-//        default:
-//            cell?.mCardLeft.backgroundColor = UIColor.init(red: 169.0/255, green: 147.0/255, blue: 183.0/255, alpha: 1.0)
-//        }
-        
-//        cell?.mTopicLabel.text = item.subject
-//        cell?.mDescriptionLabel.text = item.datumDescription
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell") as? VacationTableViewCell
-        let item = mDataYoutube[indexPath.row]
-        cell?.mTopicLabel.text = item.title
-        cell?.mDescriptionLabel.text = item.subtitle
+        let item = mDataArray[indexPath.row]
+        
+        switch item.typeID {
+        case 1:
+            cell?.mCardLeft.backgroundColor = UIColor(red: 101.0/255, green: 200.0/255, blue: 121.0/255, alpha: 1.0)
+        case 2:
+            cell?.mCardLeft.backgroundColor = UIColor.init(red: 126.0/255, green: 162.0/255, blue: 193.0/255, alpha: 1.0)
+        case 3:
+            cell?.mCardLeft.backgroundColor = UIColor.init(red: 117.0/255, green: 188.0/255, blue: 169.0/255, alpha: 1.0)
+        default:
+            cell?.mCardLeft.backgroundColor = UIColor.init(red: 169.0/255, green: 147.0/255, blue: 183.0/255, alpha: 1.0)
+        }
+        
+        cell?.mTopicLabel.text = item.subject
+        cell?.mDescriptionLabel.text = item.datumDescription
+        
+        let unixMiiliseconds: Int = Int(item.startDate * 1000)
+        let date = Date.init(timeIntervalSince1970: Double(unixMiiliseconds/1000))
+
+        let format1 = DateFormatter()
+        let format2 = DateFormatter()
+        format1.dateFormat = "MMM,yyyy"
+        format2.dateFormat = "dd"
+        let yearMonth = format1.string(from: date)
+        let day = format2.string(from: date)
+        cell?.mMonthYear.text = yearMonth
+        cell?.mDate.text = day
         
         return cell!
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         print("----- Selected row: \(indexPath.row)")
-        mTableView.deselectRow(at: indexPath, animated: true)
+//        mTableView.deselectRow(at: indexPath, animated: true)
+//        
+//        let storyBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+//        let newViewController = storyBoard.instantiateViewController(withIdentifier: "create") as! CreateVacationViewController
+//        self.present(newViewController, animated: true, completion: nil)
         
-        let storyBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
-        let newViewController = storyBoard.instantiateViewController(withIdentifier: "create") as! CreateVacationViewController
-        self.present(newViewController, animated: true, completion: nil)
-        
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        let destinationVC = segue.destination as! AnnualHistoryViewController
+        if segue.identifier == "historyAnnual" {
+            destinationVC.availableDay = mAnnualAvailable.text!
+            destinationVC.topic = "ANNUAL"
+            destinationVC.typId = 1
+            print("historyAnnual")
+        } else if segue.identifier == "historySick" {
+            destinationVC.availableDay = mSickAvailable.text!
+            destinationVC.topic = "SICK"
+            destinationVC.typId = 2
+            print("historySick")
+        } else if segue.identifier == "historyPersonal" {
+            destinationVC.availableDay = mPersonalAvailable.text!
+            destinationVC.topic = "PERSONAL"
+            destinationVC.typId = 3
+            print("historyPersonal")
+        } else {
+            destinationVC.availableDay = mOtherAvailable.text!
+            destinationVC.topic = "OTHER"
+            destinationVC.typId = 4
+            print("historyOther")
+        }
     }
     
     
     func feedVacationData(_ isLoadMore:Bool){
-        let _url = "http://192.168.1.58:3000/api1"
+//        let _url = "http://192.168.108.152:9999/apigateway/vacation/getAvailableLeaveDayByUserId?userId=9"
+        let _url = "http://192.168.109.73:8080/api/vacation/getAvailableLeaveDayByUserId?userId=9"
         self.mFeed.feedAvailable(url: _url, completion: { (result) in
-            self.mAnnualAvailable.text = String(result.vacationLeave)
-            self.mSickAvailable.text = String(result.sickLeave)
-            self.mPersonalAvailable.text = String(result.personalLeave)
-            self.mOtherAvailable.text = String(result.other)
+            self.mDataAvailable += result
+            self.mAnnualAvailable.text = String(result[2].day)
+            self.mSickAvailable.text = String(result[0].day)
+            self.mPersonalAvailable.text = String(result[1].day)
+            self.mOtherAvailable.text = String(result[3].day + result[4].day)
         })
         
-        let baseUrl = "http://codemobiles.com/adhoc/youtubes/index.php"
-        let url = String(format: "%@?username=admin&password=password&page=%i&size=%i", arguments: [baseUrl, mPageIndex, mPageSize])
-        self.mFeed.feedData(url: url) { (result) in
+//        let baseUrl = "http://192.168.108.152:9999/apigateway/vacation/getListByUserId?userId=9&pageNo=1"
+        let baseUrl = "http://192.168.109.73:8080/api/vacation/getListByUserId?userId=9&pageNo=1"
+//        let url = String(format: "%@?username=admin&password=password&page=%i&size=%i", arguments: [baseUrl, mPageIndex, mPageSize])
+        self.mFeed.feedVacationPage(url: baseUrl) { (result) in
             do {
                 if isLoadMore == true {
-                    self.mDataYoutube.removeAll()
+                    self.mDataArray.removeAll()
                 }
-                self.mDataYoutube += result
+                self.mDataArray += result
                 
                 // update page index
                 if (result.count > 0) {
@@ -136,7 +192,7 @@ class DashboardViewController: UIViewController, UITableViewDataSource, UITableV
                 }
                 
             } catch {
-                
+                print("catch: \(error)")
             }
         }
     }

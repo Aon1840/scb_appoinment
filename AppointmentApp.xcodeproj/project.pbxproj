@@ -8,6 +8,16 @@
 
 /* Begin PBXBuildFile section */
 		3D1CC18910296EF0B6FF4935 /* Pods_AppointmentApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 75A2EE7EFBF687EB46A691BF /* Pods_AppointmentApp.framework */; };
+		8A31F2CB22F2886C0018693B /* VacationPageHistoryResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A31F2CA22F2886C0018693B /* VacationPageHistoryResponse.swift */; };
+		8A31F2D422F2B5D20018693B /* time.png in Resources */ = {isa = PBXBuildFile; fileRef = 8A31F2CD22F2B5D20018693B /* time.png */; };
+		8A31F2D522F2B5D20018693B /* 1112874961530077746-128.png in Resources */ = {isa = PBXBuildFile; fileRef = 8A31F2CE22F2B5D20018693B /* 1112874961530077746-128.png */; };
+		8A31F2D622F2B5D20018693B /* 21448395241556281664.svg in Resources */ = {isa = PBXBuildFile; fileRef = 8A31F2CF22F2B5D20018693B /* 21448395241556281664.svg */; };
+		8A31F2D722F2B5D20018693B /* arrow-down-sign-to-navigate.svg in Resources */ = {isa = PBXBuildFile; fileRef = 8A31F2D022F2B5D20018693B /* arrow-down-sign-to-navigate.svg */; };
+		8A31F2D822F2B5D20018693B /* edit.svg in Resources */ = {isa = PBXBuildFile; fileRef = 8A31F2D122F2B5D20018693B /* edit.svg */; };
+		8A31F2D922F2B5D20018693B /* clock.svg in Resources */ = {isa = PBXBuildFile; fileRef = 8A31F2D222F2B5D20018693B /* clock.svg */; };
+		8A31F2DA22F2B5D20018693B /* edit.png in Resources */ = {isa = PBXBuildFile; fileRef = 8A31F2D322F2B5D20018693B /* edit.png */; };
+		8A3325F522F277AF000CEE7F /* AvailableLeaveResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A3325F422F277AF000CEE7F /* AvailableLeaveResponse.swift */; };
+		8A3325F722F27B07000CEE7F /* VacationPageResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A3325F622F27B07000CEE7F /* VacationPageResponse.swift */; };
 		8AF347C022ED4A1900118BD7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AF347BF22ED4A1900118BD7 /* AppDelegate.swift */; };
 		8AF347C222ED4A1900118BD7 /* DashboardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AF347C122ED4A1900118BD7 /* DashboardViewController.swift */; };
 		8AF347C522ED4A1900118BD7 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8AF347C322ED4A1900118BD7 /* Main.storyboard */; };
@@ -33,6 +43,16 @@
 /* Begin PBXFileReference section */
 		03B2DEC42C2479ED99EE7AD6 /* Pods-AppointmentApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AppointmentApp.release.xcconfig"; path = "Target Support Files/Pods-AppointmentApp/Pods-AppointmentApp.release.xcconfig"; sourceTree = "<group>"; };
 		75A2EE7EFBF687EB46A691BF /* Pods_AppointmentApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_AppointmentApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		8A31F2CA22F2886C0018693B /* VacationPageHistoryResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VacationPageHistoryResponse.swift; sourceTree = "<group>"; };
+		8A31F2CD22F2B5D20018693B /* time.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = time.png; sourceTree = "<group>"; };
+		8A31F2CE22F2B5D20018693B /* 1112874961530077746-128.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "1112874961530077746-128.png"; sourceTree = "<group>"; };
+		8A31F2CF22F2B5D20018693B /* 21448395241556281664.svg */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = 21448395241556281664.svg; sourceTree = "<group>"; };
+		8A31F2D022F2B5D20018693B /* arrow-down-sign-to-navigate.svg */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = "arrow-down-sign-to-navigate.svg"; sourceTree = "<group>"; };
+		8A31F2D122F2B5D20018693B /* edit.svg */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = edit.svg; sourceTree = "<group>"; };
+		8A31F2D222F2B5D20018693B /* clock.svg */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = clock.svg; sourceTree = "<group>"; };
+		8A31F2D322F2B5D20018693B /* edit.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = edit.png; sourceTree = "<group>"; };
+		8A3325F422F277AF000CEE7F /* AvailableLeaveResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AvailableLeaveResponse.swift; sourceTree = "<group>"; };
+		8A3325F622F27B07000CEE7F /* VacationPageResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VacationPageResponse.swift; sourceTree = "<group>"; };
 		8AF347BC22ED4A1900118BD7 /* AppointmentApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AppointmentApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8AF347BF22ED4A1900118BD7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		8AF347C122ED4A1900118BD7 /* DashboardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardViewController.swift; sourceTree = "<group>"; };
@@ -87,6 +107,20 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		8A31F2CC22F2B5D20018693B /* Icon */ = {
+			isa = PBXGroup;
+			children = (
+				8A31F2CD22F2B5D20018693B /* time.png */,
+				8A31F2CE22F2B5D20018693B /* 1112874961530077746-128.png */,
+				8A31F2CF22F2B5D20018693B /* 21448395241556281664.svg */,
+				8A31F2D022F2B5D20018693B /* arrow-down-sign-to-navigate.svg */,
+				8A31F2D122F2B5D20018693B /* edit.svg */,
+				8A31F2D222F2B5D20018693B /* clock.svg */,
+				8A31F2D322F2B5D20018693B /* edit.png */,
+			);
+			path = Icon;
+			sourceTree = "<group>";
+		};
 		8AF347B322ED4A1900118BD7 = {
 			isa = PBXGroup;
 			children = (
@@ -122,12 +156,15 @@
 				8AF347C822ED4A1B00118BD7 /* LaunchScreen.storyboard */,
 				8AF347CB22ED4A1B00118BD7 /* Info.plist */,
 				8AF347D722EF3B2F00118BD7 /* AvailableResponse.swift */,
+				8A3325F422F277AF000CEE7F /* AvailableLeaveResponse.swift */,
 				8AF347D922EF3BF900118BD7 /* VacationResponse.swift */,
+				8A3325F622F27B07000CEE7F /* VacationPageResponse.swift */,
 				8AF347DD22EF3F6700118BD7 /* YoutubeResponse.swift */,
 				8AF347DB22EF3C5700118BD7 /* FeedData.swift */,
 				8AF347D522EEFCC300118BD7 /* YoutubeFeed.swift */,
 				8AF347DF22EF401100118BD7 /* VacationTableViewCell.swift */,
 				8AF347E122EF402200118BD7 /* Extension.swift */,
+				8A31F2CA22F2886C0018693B /* VacationPageHistoryResponse.swift */,
 			);
 			path = AppointmentApp;
 			sourceTree = "<group>";
@@ -135,6 +172,7 @@
 		8AF347E322EF4C9C00118BD7 /* Image */ = {
 			isa = PBXGroup;
 			children = (
+				8A31F2CC22F2B5D20018693B /* Icon */,
 				8AF347E422EF4C9C00118BD7 /* dog.jpg */,
 				8AF347E522EF4C9C00118BD7 /* add.png */,
 			);
@@ -204,8 +242,15 @@
 				8AF347CA22ED4A1B00118BD7 /* LaunchScreen.storyboard in Resources */,
 				8AF347E622EF4C9C00118BD7 /* dog.jpg in Resources */,
 				8AF347C722ED4A1B00118BD7 /* Assets.xcassets in Resources */,
+				8A31F2DA22F2B5D20018693B /* edit.png in Resources */,
+				8A31F2D922F2B5D20018693B /* clock.svg in Resources */,
 				8AF347E722EF4C9C00118BD7 /* add.png in Resources */,
 				8AF347D222EEFAF800118BD7 /* Podfile in Resources */,
+				8A31F2D822F2B5D20018693B /* edit.svg in Resources */,
+				8A31F2D522F2B5D20018693B /* 1112874961530077746-128.png in Resources */,
+				8A31F2D622F2B5D20018693B /* 21448395241556281664.svg in Resources */,
+				8A31F2D722F2B5D20018693B /* arrow-down-sign-to-navigate.svg in Resources */,
+				8A31F2D422F2B5D20018693B /* time.png in Resources */,
 				8AF347C522ED4A1900118BD7 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -263,12 +308,15 @@
 				8AF347DE22EF3F6700118BD7 /* YoutubeResponse.swift in Sources */,
 				8AF347DC22EF3C5700118BD7 /* FeedData.swift in Sources */,
 				8AF347D622EEFCC300118BD7 /* YoutubeFeed.swift in Sources */,
+				8A3325F522F277AF000CEE7F /* AvailableLeaveResponse.swift in Sources */,
 				8AF347EF22EF56AA00118BD7 /* OtherHistoryViewController.swift in Sources */,
+				8A3325F722F27B07000CEE7F /* VacationPageResponse.swift in Sources */,
 				8AF347E222EF402200118BD7 /* Extension.swift in Sources */,
 				8AF347DA22EF3BF900118BD7 /* VacationResponse.swift in Sources */,
 				8AF347D822EF3B2F00118BD7 /* AvailableResponse.swift in Sources */,
 				8AF347E022EF401100118BD7 /* VacationTableViewCell.swift in Sources */,
 				8AF347ED22EF569100118BD7 /* PersonalHistoryViewController.swift in Sources */,
+				8A31F2CB22F2886C0018693B /* VacationPageHistoryResponse.swift in Sources */,
 				8AF347E922EF565A00118BD7 /* SickHistoryViewController.swift in Sources */,
 				8AF347F122EF5B0A00118BD7 /* CreateVacationViewController.swift in Sources */,
 				8AF347EB22EF566900118BD7 /* AnnualHistoryViewController.swift in Sources */,
